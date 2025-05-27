@@ -23,12 +23,12 @@
     }
     h1 {
       color: #00aad9;
-      font-size: 2.5rem;
+      font-size: 1.5rem;
       margin-bottom: 0.5rem;
     }
     h2 {
       color: #ff99aa;
-      font-size: 1.5rem;
+      font-size: 1.0rem;
       margin-bottom: 2rem;
     }
     .lottery-box {
@@ -154,25 +154,27 @@
       <th>獎項</th>
       <th>機率</th>
     </tr>
-    <tr><td>每一口都是，幸福的延續</td><td>25%</td></tr>
+    <tr><td>每一口都是<br>幸福的延續</td><td>25%</td></tr>
     <tr><td>結帳金額98折</td><td>25%</td></tr>
     <tr><td>結帳金額95折</td><td>20%</td></tr>
-    <tr><td>消費滿千折100元，消費滿百折10 元 </td><td>15%</td></tr>
-    <tr><td>結帳金額9折</td><td>14%</td></tr>
-    <tr><td>專屬晴人小吊飾</td><td>1%</td></tr>
+    <tr><td>消費滿千折100元<br>消費滿百折10 元 </td><td>15%</td></tr>
+    <tr><td>結帳金額9折</td><td>9%</td></tr>
+    <tr><td>專屬晴人小吊飾</td><td>5%</td></tr>
+    <tr><td>這單老闆幫你結！</td><td>1%</td></tr>
   </table>
 
-  <audio id="celebrateSound" src="sound/confetti.mp3"></audio>
-  <audio id="grandPrizeSound" src="sound/grand-prize.mp3"></audio>
+  <audio id="celebrateSound" src="sound/s.mp3"></audio>
+  <audio id="grandPrizeSound" src="sound/big.mp3"></audio>
 
   <script>
     const prizes = [
-      { name: '每一口都是 ，幸福的延續 ', img: 'img/6.png', weight: 25 },
+      { name: '每一口都是 幸福的延續 ', img: 'img/6.png', weight: 25 },
       { name: '結帳金額98折 ', img: 'img/5.png', weight: 25 },
       { name: '結帳金額95折', img: 'img/4.png', weight: 20 },
-      { name: '消費滿千折100元，消費滿百折10元', img: 'img/3.png', weight: 15 },
-      { name: '結帳金額9折', img: 'img/2.png', weight: 14 },
-      { name: '專屬晴人小吊飾', img: 'img/1.png', weight: 1 },
+      { name: '消費滿千折100元 消費滿百折10元', img: 'img/3.png', weight: 15 },
+      { name: '結帳金額9折', img: 'img/2.png', weight: 9 },
+      { name: '專屬晴人小吊飾', img: 'img/1.png', weight: 5 },
+      { name: '這單老闆幫你結！', img: 'img/1.png', weight: 1 },
     ];
 
     let canDraw = true;
@@ -209,7 +211,7 @@
         const final = pickPrize();
         item.innerHTML = `<img src="${final.img}"><span>${final.name}</span>`;
         celebrate.style.display = 'block';
-        if (final.weight <= 10) grandPrizeSound.play();
+        if (final.weight <= 1) grandPrizeSound.play();
         else celebrateSound.play();
         setTimeout(() => {
           celebrate.style.display = 'none';
